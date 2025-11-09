@@ -1,16 +1,13 @@
-/* Global app styles */
 #root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/* Smooth transitions for theme changes */
 * {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Image loading animation */
 img {
   transition: opacity 0.3s ease;
 }
@@ -19,22 +16,18 @@ img:not([src]) {
   opacity: 0;
 }
 
-/* Card hover effects */
 .card {
   transition: all 0.3s ease;
 }
 
-/* Link hover effects */
 a {
   transition: color 0.2s ease;
 }
 
-/* Button animations */
 .btn {
   transition: all 0.2s ease;
 }
 
-/* Custom scrollbar styling */
 ::-webkit-scrollbar {
   width: 12px;
 }
@@ -64,7 +57,6 @@ a {
   background: #666;
 }
 
-/* Line clamp utility */
 .line-clamp-2 {
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -81,3 +73,44 @@ a {
   overflow: hidden;
 }
 
+*:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.shimmer {
+  animation: shimmer 2s infinite;
+  background: linear-gradient(to right, #f0f0f0 4%, #e0e0e0 25%, #f0f0f0 36%);
+  background-size: 1000px 100%;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.gradient-text {
+  background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
