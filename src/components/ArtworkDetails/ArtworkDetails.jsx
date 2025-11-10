@@ -20,6 +20,11 @@ const ArtworkDetails = () => {
       .then((data) => {
         setArtwork(data);
         
+        // Check if current user has already liked this artwork
+        if (user?.email && data.likedBy && Array.isArray(data.likedBy)) {
+          setHasLiked(data.likedBy.includes(user.email));
+        }
+        
         // Fetch other artworks by the same artist
         fetch(
           `${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/my-artworks/${data.artistEmail}`
@@ -33,7 +38,7 @@ const ArtworkDetails = () => {
           });
       })
       .catch(() => setLoading(false));
-  }, [id]);
+  }, [id, user]);
 
   const handleLike = () => {
     if (hasLiked) {
@@ -49,19 +54,31 @@ const ArtworkDetails = () => {
       `${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/artwork/${id}/like`,
       {
         method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userEmail: user?.email || "anonymous",
+          action: "like",
+        }),
       }
     )
       .then((res) => res.json())
       .then(() => {
-        setArtwork({ ...artwork, likes: (artwork.likes || 0) + 1 });
-        setHasLiked(true);
-        Swal.fire({
-          title: "Liked!",
-          text: "You liked this artwork.",
-          icon: "success",
-          timer: 1500,
-          showConfirmButton: false,
-        });
+        // Fetch updated artwork to get the actual like count from database
+        fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/artwork/${id}`)
+          .then((res) => res.json())
+          .then((updatedArtwork) => {
+            setArtwork(updatedArtwork);
+            setHasLiked(true);
+            Swal.fire({
+              title: "Liked!",
+              text: "You liked this artwork.",
+              icon: "success",
+              timer: 1500,
+              showConfirmButton: false,
+            });
+          });
       })
       .catch((error) => {
         Swal.fire({
