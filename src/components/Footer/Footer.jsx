@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
-    <footer className="bg-base-200 text-base-content">
-      <div className="footer p-10 max-w-7xl mx-auto">
+    <footer className="bg-base-200 text-base-content ">
+      <div className="footer flex justify-between items-center p-10 max-w-7xl mx-auto">
         <aside>
           <h2 className="text-2xl font-bold">
             <span className="text-secondary">Artisan's</span>

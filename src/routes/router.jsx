@@ -65,9 +65,11 @@ const router = createBrowserRouter([
       {
         path: '/artwork/:id',
         element: (
-          <Suspense fallback={<Loading />}>
-            <ArtworkDetails />
-          </Suspense>
+          <PrivateRoute>
+            <Suspense fallback={<Loading />}>
+              <ArtworkDetails />
+            </Suspense>
+          </PrivateRoute>
         ),
       },
       {
