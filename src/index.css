@@ -1,60 +1,9 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-:root {
-  --primary-color: #2C3E50;
-  --secondary-color: #E74C3C;
-  --accent-color: #F39C12;
-  --background-light: #f8fafc;
-  --card-bg: #ffffff;
-  --text-dark: #1f2937;
-  --text-muted: #6b7280;
-}
-
 body {
-  background-color: var(--background-light);
-  color: var(--text-dark);
   font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   min-height: 100vh;
-}
-
-.card {
-  background-color: var(--card-bg);
-  border: 1px solid #e5e7eb;
-  transition: all 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(44, 62, 80, 0.1);
-}
-
-.btn-primary {
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-  border: none;
-  color: white;
-}
-
-.btn-primary:hover {
-  background: linear-gradient(135deg, #34495e, #c0392b);
-  color: white;
-}
-
-.navbar {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.input, .select, .textarea {
-  background-color: rgba(255, 255, 255, 0.9);
-  border: 2px solid #e5e7eb;
-  color: var(--text-dark);
-}
-
-.input:focus, .select:focus, .textarea:focus {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(44, 62, 80, 0.1);
 }
 
 /* Custom scrollbar */

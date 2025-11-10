@@ -139,7 +139,7 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-100 via-white to-gray-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-linear-to-br from-slate-100 via-white to-gray-100 flex items-center justify-center p-4">
       <div className="max-w-md w-full bg-white/80 backdrop-blur-lg rounded-2xl p-8 shadow-2xl border border-gray-200">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold text-gray-800 mb-2">Join Our Community</h2>

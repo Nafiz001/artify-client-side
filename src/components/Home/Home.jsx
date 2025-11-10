@@ -50,7 +50,7 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-base-100">
       {/* Hero Section with Elegant Slider */}
-      <div className="relative h-[70vh] lg:h-[80vh] overflow-hidden bg-gradient-to-r from-base-300 to-base-200">
+      <div className="relative h-[70vh] lg:h-[80vh] overflow-hidden bg-linear-to-r from-base-300 to-base-200">
         {slides.map((slide, index) => (
           <div
             key={index}
@@ -60,7 +60,7 @@ const Home = () => {
           >
             <div className="grid lg:grid-cols-2 h-full">
               {/* Text Content */}
-              <div className="flex items-center justify-center p-8 lg:p-16 bg-gradient-to-br from-primary/5 to-secondary/5">
+              <div className="flex items-center justify-center p-8 lg:p-16 bg-linear-to-br from-primary/5 to-secondary/5">
                 <div className="max-w-xl text-center lg:text-left">
                   <Fade cascade damping={0.3}>
                     <h1 className="text-4xl lg:text-6xl font-light mb-6 text-base-content leading-tight">
@@ -86,7 +86,7 @@ const Home = () => {
                   alt={slide.title}
                   className="w-full h-full object-cover transition-transform duration-1000 hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-l from-transparent to-primary/10"></div>
+                <div className="absolute inset-0 bg-linear-to-l from-transparent to-primary/10"></div>
               </div>
             </div>
           </div>
@@ -143,7 +143,7 @@ const Home = () => {
                         alt={artwork.title}
                         className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
                     <div className="pt-4 space-y-2">
                       <h3 className="font-medium text-base-content group-hover:text-primary transition-colors">
@@ -161,7 +161,7 @@ const Home = () => {
           <div className="text-center mt-12">
             <Link 
               to="/explore" 
-              className="btn btn-outline btn-lg px-12 rounded-none border-neutral text-neutral hover:bg-neutral hover:text-white transition-all duration-300 text-sm font-medium tracking-wider uppercase"
+              className="btn btn-outline btn-primary btn-lg px-12 rounded-none transition-all duration-300 text-sm font-medium tracking-wider uppercase"
             >
               View All Artworks
             </Link>
@@ -170,7 +170,7 @@ const Home = () => {
       </section>
 
       {/* Why Buy Original Art Section */}
-      <section className="py-20 bg-gradient-to-br from-base-200/50 to-base-300/30">
+      <section className="py-20 bg-linear-to-br from-base-200/50 to-base-300/30">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <Slide direction="left">
@@ -253,7 +253,7 @@ const Home = () => {
                       alt={category.name}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent"></div>
                     <div className="absolute bottom-4 left-4">
                       <h3 className="text-white font-medium text-sm lg:text-base">{category.name}</h3>
                     </div>
@@ -266,7 +266,7 @@ const Home = () => {
       </section>
 
       {/* Typewriter Section */}
-      <section className="py-16 bg-gradient-to-r from-primary/10 to-secondary/10">
+      <section className="py-16 bg-linear-to-r from-primary/10 to-secondary/10">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl lg:text-5xl font-light mb-8 text-primary">
             <Typewriter
