@@ -80,52 +80,48 @@ const Navbar = () => {
           Explore Artworks
         </NavLink>
       </li>
-      {user && (
-        <>
-          <li>
-            <NavLink 
-              to="/add-artwork" 
-              className={({ isActive }) => 
-                `px-4 py-2 rounded-lg transition-all duration-300 ${
-                  isActive 
-                    ? "text-primary font-semibold bg-primary/10" 
-                    : "text-base-content hover:text-primary hover:bg-primary/5"
-                }`
-              }
-            >
-              Add Artwork
-            </NavLink>
-          </li>
-          <li>
-            <NavLink 
-              to="/my-gallery" 
-              className={({ isActive }) => 
-                `px-4 py-2 rounded-lg transition-all duration-300 ${
-                  isActive 
-                    ? "text-primary font-semibold bg-primary/10" 
-                    : "text-base-content hover:text-primary hover:bg-primary/5"
-                }`
-              }
-            >
-              My Gallery
-            </NavLink>
-          </li>
-          <li>
-            <NavLink 
-              to="/my-favorites" 
-              className={({ isActive }) => 
-                `px-4 py-2 rounded-lg transition-all duration-300 ${
-                  isActive 
-                    ? "text-primary font-semibold bg-primary/10" 
-                    : "text-base-content hover:text-primary hover:bg-primary/5"
-                }`
-              }
-            >
-              My Favorites
-            </NavLink>
-          </li>
-        </>
-      )}
+      <li>
+        <NavLink 
+          to="/add-artwork" 
+          className={({ isActive }) => 
+            `px-4 py-2 rounded-lg transition-all duration-300 ${
+              isActive 
+                ? "text-primary font-semibold bg-primary/10" 
+                : "text-base-content hover:text-primary hover:bg-primary/5"
+            }`
+          }
+        >
+          Add Artwork
+        </NavLink>
+      </li>
+      <li>
+        <NavLink 
+          to="/my-gallery" 
+          className={({ isActive }) => 
+            `px-4 py-2 rounded-lg transition-all duration-300 ${
+              isActive 
+                ? "text-primary font-semibold bg-primary/10" 
+                : "text-base-content hover:text-primary hover:bg-primary/5"
+            }`
+          }
+        >
+          My Gallery
+        </NavLink>
+      </li>
+      <li>
+        <NavLink 
+          to="/my-favorites" 
+          className={({ isActive }) => 
+            `px-4 py-2 rounded-lg transition-all duration-300 ${
+              isActive 
+                ? "text-primary font-semibold bg-primary/10" 
+                : "text-base-content hover:text-primary hover:bg-primary/5"
+            }`
+          }
+        >
+          My Favorites
+        </NavLink>
+      </li>
     </>
   );
 
@@ -151,7 +147,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-4 shadow-lg bg-base-100 rounded-lg w-52 border border-base-300"
+            className="menu menu-sm dropdown-content mt-3 z-10 p-4 shadow-lg bg-base-100 rounded-lg w-52 border border-base-300"
           >
             {navLinks}
           </ul>

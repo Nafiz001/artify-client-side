@@ -11,19 +11,19 @@ const Home = () => {
 
   const slides = [
     {
-      image: "https://i.ibb.co/7QMH9gD/hero-art1.jpg",
+      image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=1200&q=80",
       title: "Make Your Space a Gift",
       subtitle: "Discover original art from emerging and established artists",
       cta: "Shop Original Art"
     },
     {
-      image: "https://i.ibb.co/2MYdXqZ/hero2.jpg", 
+      image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=1200&q=80", 
       title: "The Joy of Living with Original Art",
       subtitle: "Experience authentic creativity in your daily life",
       cta: "Explore Collections"
     },
     {
-      image: "https://i.ibb.co/TKq8N3m/hero3.jpg",
+      image: "https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?w=1200&q=80",
       title: "Curated Collections",
       subtitle: "Hand-picked artworks for discerning collectors",
       cta: "View Curations"
@@ -213,7 +213,7 @@ const Home = () => {
             <Slide direction="right">
               <div className="relative">
                 <img
-                  src="https://i.ibb.co/9nLD7Zq/living-room-art.jpg"
+                  src="https://images.unsplash.com/photo-1616587226157-48e49175ee20?w=800&q=80"
                   alt="Living room with original art"
                   className="w-full rounded-sm shadow-lg"
                 />
@@ -238,12 +238,12 @@ const Home = () => {
           
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {[
-              { name: "Paintings", image: "https://i.ibb.co/k5pZYvc/paintings.jpg" },
-              { name: "Photography", image: "https://i.ibb.co/2MYdXqZ/photography.jpg" },
-              { name: "Sculpture", image: "https://i.ibb.co/TKq8N3m/sculpture.jpg" },
-              { name: "Digital Art", image: "https://i.ibb.co/QDH9kZS/digital.jpg" },
-              { name: "Mixed Media", image: "https://i.ibb.co/QNxF9MH/mixed-media.jpg" },
-              { name: "Drawings", image: "https://i.ibb.co/MGxzqJY/drawings.jpg" },
+              { name: "Paintings", image: "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?w=400&q=80" },
+              { name: "Photography", image: "https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=400&q=80" },
+              { name: "Sculpture", image: "https://www.shutterstock.com/image-illustration/abstract-illustration-3d-rendering-white-260nw-2176292317.jpg" },
+              { name: "Digital Art", image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&q=80" },
+              { name: "Mixed Media", image: "https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=400&q=80" },
+              { name: "Drawings", image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=400&q=80" },
             ].map((category, index) => (
               <Fade key={category.name} delay={index * 100}>
                 <Link to={`/explore?category=${category.name}`} className="group block">
