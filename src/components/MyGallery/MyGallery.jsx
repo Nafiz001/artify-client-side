@@ -51,8 +51,8 @@ const MyGallery = () => {
       .catch(() => setLoading(false));
   };
 
-  const handleDelete = (id, title) => {
-    Swal.fire({
+  const handleDelete = async (id, title) => {
+    const result = await Swal.fire({
       title: "Are you sure?",
       text: `Do you want to delete "${title}"? This action cannot be undone.`,
       icon: "warning",
@@ -60,37 +60,48 @@ const MyGallery = () => {
       confirmButtonColor: "#d33",
       cancelButtonColor: "#3085d6",
       confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        fetch(
+    });
+
+    if (result.isConfirmed) {
+      try {
+        // Get Firebase token
+        const token = await user.getIdToken();
+
+        const response = await fetch(
           `${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/artwork/${id}`,
           {
             method: "DELETE",
+            headers: {
+              "Authorization": `Bearer ${token}`,
+            },
           }
-        )
-          .then((res) => res.json())
-          .then(() => {
-            Swal.fire({
-              title: "Deleted!",
-              text: "Your artwork has been deleted.",
-              icon: "success",
-              timer: 1500,
-              showConfirmButton: false,
-            });
-            fetchArtworks();
-          })
-          .catch((error) => {
-            Swal.fire({
-              title: "Error!",
-              text: error.message,
-              icon: "error",
-            });
-          });
+        );
+
+        if (!response.ok) {
+          throw new Error('Failed to delete artwork');
+        }
+
+        await response.json();
+        
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your artwork has been deleted.",
+          icon: "success",
+          timer: 1500,
+          showConfirmButton: false,
+        });
+        fetchArtworks();
+      } catch (error) {
+        Swal.fire({
+          title: "Error!",
+          text: error.message,
+          icon: "error",
+        });
       }
-    });
+    }
   };
 
-  const handleUpdate = (e) => {
+  const handleUpdate = async (e) => {
     e.preventDefault();
     const form = e.target;
 
@@ -105,38 +116,47 @@ const MyGallery = () => {
       visibility: form.visibility.value,
     };
 
-    fetch(
-      `${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/artwork/${
-        editingArtwork._id
-      }`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(updatedData),
+    try {
+      // Get Firebase token
+      const token = await user.getIdToken();
+
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/artwork/${
+          editingArtwork._id
+        }`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
+          },
+          body: JSON.stringify(updatedData),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error('Failed to update artwork');
       }
-    )
-      .then((res) => res.json())
-      .then(() => {
-        Swal.fire({
-          title: "Updated!",
-          text: "Your artwork has been updated successfully.",
-          icon: "success",
-          timer: 1500,
-          showConfirmButton: false,
-        });
-        setEditingArtwork(null);
-        document.getElementById("edit_modal").close();
-        fetchArtworks();
-      })
-      .catch((error) => {
-        Swal.fire({
-          title: "Error!",
-          text: error.message,
-          icon: "error",
-        });
+
+      await response.json();
+      
+      Swal.fire({
+        title: "Updated!",
+        text: "Your artwork has been updated successfully.",
+        icon: "success",
+        timer: 1500,
+        showConfirmButton: false,
       });
+      setEditingArtwork(null);
+      document.getElementById("edit_modal").close();
+      fetchArtworks();
+    } catch (error) {
+      Swal.fire({
+        title: "Error!",
+        text: error.message,
+        icon: "error",
+      });
+    }
   };
 
   const openEditModal = (artwork) => {

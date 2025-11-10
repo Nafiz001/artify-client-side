@@ -13,6 +13,8 @@ const ExploreArtworks = lazy(() => import('../components/ExploreArtworks/Explore
 const ArtworkDetails = lazy(() => import('../components/ArtworkDetails/ArtworkDetails'));
 const MyGallery = lazy(() => import('../components/MyGallery/MyGallery'));
 const MyFavorites = lazy(() => import('../components/MyFavorites/MyFavorites'));
+const ArtistProfile = lazy(() => import('../components/ArtistProfile/ArtistProfile'));
+const CategoryFilter = lazy(() => import('../components/CategoryFilter/CategoryFilter'));
 const NotFound = lazy(() => import('../components/NotFound/NotFound'));
 
 const router = createBrowserRouter([
@@ -90,6 +92,22 @@ const router = createBrowserRouter([
               <MyFavorites />
             </Suspense>
           </PrivateRoute>
+        ),
+      },
+      {
+        path: '/artist/:email',
+        element: (
+          <Suspense fallback={<Loading />}>
+            <ArtistProfile />
+          </Suspense>
+        ),
+      },
+      {
+        path: '/categories',
+        element: (
+          <Suspense fallback={<Loading />}>
+            <CategoryFilter />
+          </Suspense>
         ),
       },
       {

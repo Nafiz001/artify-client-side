@@ -82,7 +82,7 @@ const ExploreArtworks = () => {
                   Search by title or artist
                 </span>
               </label>
-              <div className="input-group">
+              <div className="input-group flex gap-2 items-center justify-center">
                 <input
                   type="text"
                   placeholder="Search artworks..."

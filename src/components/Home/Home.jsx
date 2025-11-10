@@ -6,7 +6,9 @@ import { Tooltip } from "react-tooltip";
 
 const Home = () => {
   const [featuredArtworks, setFeaturedArtworks] = useState([]);
+  const [topArtists, setTopArtists] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [artistsLoading, setArtistsLoading] = useState(true);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
@@ -45,6 +47,16 @@ const Home = () => {
         setLoading(false);
       })
       .catch(() => setLoading(false));
+  }, []);
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/top-artists`)
+      .then((res) => res.json())
+      .then((data) => {
+        setTopArtists(data);
+        setArtistsLoading(false);
+      })
+      .catch(() => setArtistsLoading(false));
   }, []);
 
   return (
@@ -261,6 +273,179 @@ const Home = () => {
                 </Link>
               </Fade>
             ))}
+          </div>
+          
+          <div className="text-center mt-12">
+            <Link 
+              to="/categories" 
+              className="btn btn-outline btn-secondary btn-lg px-12 rounded-none transition-all duration-300 text-sm font-medium tracking-wider uppercase"
+            >
+              View All Categories
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Top Artists of the Week Section */}
+      <section className="py-20 bg-gradient-to-br from-primary/5 to-secondary/5">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="text-center mb-16">
+            <Fade>
+              <h2 className="text-3xl lg:text-4xl font-light mb-4 text-base-content">
+                Top Artists of the <span className="font-medium text-primary">Week</span>
+              </h2>
+              <div className="w-24 h-0.5 bg-primary mx-auto mb-6"></div>
+              <p className="text-lg text-base-content/70 max-w-2xl mx-auto leading-relaxed">
+                Celebrating our most active and appreciated artists this week
+              </p>
+            </Fade>
+          </div>
+
+          {artistsLoading ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {[...Array(4)].map((_, index) => (
+                <div key={index} className="space-y-4">
+                  <div className="skeleton h-48 w-full rounded-lg"></div>
+                  <div className="skeleton h-4 w-3/4"></div>
+                  <div className="skeleton h-4 w-1/2"></div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {topArtists.map((artist, index) => (
+                <Fade key={artist._id} delay={index * 150}>
+                  <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 group">
+                    <figure className="px-6 pt-6">
+                      <div className="avatar">
+                        <div className="w-32 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                          <img 
+                            src={artist.artistPhoto || "https://i.ibb.co/7J4HzsG/default-avatar.png"} 
+                            alt={artist.artistName}
+                            className="object-cover"
+                          />
+                        </div>
+                      </div>
+                    </figure>
+                    <div className="card-body items-center text-center">
+                      <h3 className="card-title text-base-content group-hover:text-primary transition-colors">
+                        {artist.artistName}
+                      </h3>
+                      <div className="flex gap-6 mt-2">
+                        <div className="text-center">
+                          <p className="text-2xl font-bold text-primary">{artist.totalArtworks}</p>
+                          <p className="text-xs text-base-content/60">Artworks</p>
+                        </div>
+                        <div className="divider divider-horizontal mx-0"></div>
+                        <div className="text-center">
+                          <p className="text-2xl font-bold text-secondary">{artist.totalLikes || 0}</p>
+                          <p className="text-xs text-base-content/60">Total Likes</p>
+                        </div>
+                      </div>
+                      <div className="card-actions mt-4">
+                        <Link 
+                          to={`/artist/${encodeURIComponent(artist._id)}`}
+                          className="btn btn-primary btn-sm"
+                        >
+                          View Profile
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </Fade>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Community Highlights Section */}
+      <section className="py-20 bg-base-100">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="text-center mb-16">
+            <Fade>
+              <h2 className="text-3xl lg:text-4xl font-light mb-4 text-base-content">
+                Community <span className="font-medium text-secondary">Highlights</span>
+              </h2>
+              <div className="w-24 h-0.5 bg-secondary mx-auto mb-6"></div>
+              <p className="text-lg text-base-content/70 max-w-2xl mx-auto leading-relaxed">
+                Discover what's happening in our vibrant art community
+              </p>
+            </Fade>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <Slide direction="left">
+              <div className="card bg-gradient-to-br from-primary/10 to-primary/5 shadow-xl hover:shadow-2xl transition-all duration-300">
+                <div className="card-body">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="p-3 bg-primary/20 rounded-lg">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                      </svg>
+                    </div>
+                    <h3 className="card-title text-base-content">Weekly Challenge</h3>
+                  </div>
+                  <p className="text-base-content/70 mb-4">
+                    Join our weekly art challenge! This week's theme: "Abstract Emotions". 
+                    Submit your artwork and win amazing prizes.
+                  </p>
+                  <div className="card-actions justify-end">
+                    <Link to="/explore" className="btn btn-primary btn-sm">
+                      Participate Now
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </Slide>
+
+            <Slide direction="up">
+              <div className="card bg-gradient-to-br from-secondary/10 to-secondary/5 shadow-xl hover:shadow-2xl transition-all duration-300">
+                <div className="card-body">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="p-3 bg-secondary/20 rounded-lg">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    <h3 className="card-title text-base-content">Featured Collection</h3>
+                  </div>
+                  <p className="text-base-content/70 mb-4">
+                    Explore our curated collection "Modern Masterpieces" featuring contemporary 
+                    artworks from around the globe.
+                  </p>
+                  <div className="card-actions justify-end">
+                    <Link to="/explore" className="btn btn-secondary btn-sm">
+                      Browse Collection
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </Slide>
+
+            <Slide direction="right">
+              <div className="card bg-gradient-to-br from-accent/10 to-accent/5 shadow-xl hover:shadow-2xl transition-all duration-300">
+                <div className="card-body">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="p-3 bg-accent/20 rounded-lg">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                    <h3 className="card-title text-base-content">Artist Spotlight</h3>
+                  </div>
+                  <p className="text-base-content/70 mb-4">
+                    Meet our artist of the week! Discover their creative journey, inspiration, 
+                    and exclusive behind-the-scenes content.
+                  </p>
+                  <div className="card-actions justify-end">
+                    <Link to="/explore" className="btn btn-accent btn-sm">
+                      Read Story
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </Slide>
           </div>
         </div>
       </section>
