@@ -133,8 +133,8 @@ const Home = () => {
               ))}
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {featuredArtworks.slice(0, 4).map((artwork, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {featuredArtworks.slice(0, 6).map((artwork, index) => (
                 <Fade key={artwork._id} delay={index * 200}>
                   <Link to={`/artwork/${artwork._id}`} className="group cursor-pointer">
                     <div className="relative overflow-hidden bg-white rounded-sm shadow-sm hover:shadow-xl transition-all duration-500">
