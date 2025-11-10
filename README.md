@@ -1,18 +1,19 @@
-# Artisan's Echo
+# Artisan's Echo - Art Marketplace Platform
 
 A modern and elegant art marketplace platform where artists can showcase their creative works and art enthusiasts can discover, appreciate, and curate their favorite pieces.
 
-🔗 **Live Site:** [Coming Soon]
+🔗 **Live Site:** [https://artify-client-side.web.app](https://artify-client-side.web.app)
 
 ## ✨ Key Features
 
-- **🎨 Beautiful Gallery Experience** - Browse stunning artworks from talented artists worldwide with an elegant, modern UI inspired by leading art marketplaces
-- **🔐 Secure Authentication** - Google Sign-In and email/password authentication with Firebase, including profile management
-- **🖼️ Artist Portfolios** - Create and manage your personal art gallery with full CRUD operations
-- **❤️ Interactive Engagement** - Like artworks and add favorites to your personal collection
-- **🔍 Smart Search & Filters** - Find art by title, artist name, or category with real-time filtering
-- **🌙 Dark/Light Mode** - Toggle between themes with localStorage persistence for comfortable viewing
-- **📱 Fully Responsive** - Seamless experience across desktop, tablet, and mobile devices
+- **🎨 Stunning Art Gallery** - Browse and explore beautiful artworks from talented artists worldwide with an elegant, modern UI featuring smooth animations and intuitive navigation
+- **👤 Artist Profiles** - Dedicated artist profile pages showcasing bio, total artworks, accumulated likes, and follower count with a complete gallery view
+- **🖼️ Personal Art Management** - Create, update, and manage your personal art gallery with full CRUD operations including image upload, categorization, and visibility controls
+- **❤️ Interactive Engagement System** - Like artworks to show appreciation (using MongoDB $inc for real-time count updates) and add favorites to your personal collection for easy access
+- **🔍 Advanced Search & Filter** - Find art by title, artist name, or category with real-time filtering, plus a dedicated category page with tab-based navigation grouping artworks by type
+- **🌙 Dark/Light Theme Toggle** - Seamlessly switch between dark and light modes with localStorage persistence for comfortable viewing at any time of day
+- **🔐 Secure Authentication** - Google Sign-In and email/password authentication with Firebase, including profile photo display and secure private routes
+- **📱 Fully Responsive Design** - Beautiful, consistent experience across desktop, tablet, and mobile devices with adaptive layouts and touch-friendly interfaces
 
 ## 🛠️ Technologies Used
 
