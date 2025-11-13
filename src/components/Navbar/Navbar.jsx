@@ -4,7 +4,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import Swal from "sweetalert2";
 
 const Navbar = () => {
-  const { user, signOutUser } = useContext(AuthContext);
+  const { user, loading, signOutUser } = useContext(AuthContext);
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") || "light"
   );
@@ -126,7 +126,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-base-100 shadow-lg px-6 py-4">
+    <div className="navbar bg-base-100 shadow-lg px-1 md:px-6 py-4">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -152,7 +152,7 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div>
-        <Link to="/" className="text-2xl font-bold tracking-wide ml-4">
+        <Link to="/" className="text-lg sm:text-2xl font-bold tracking-wide ml-2 sm:ml-4">
           <span className="text-primary">Artisan's</span>
           <span className="text-secondary ml-1">Echo</span>
         </Link>
@@ -162,7 +162,7 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1 space-x-2">{navLinks}</ul>
       </div>
       
-      <div className="navbar-end flex items-center space-x-4">
+      <div className="navbar-end flex items-center space-x-2 sm:space-x-4">
         <label className="swap swap-rotate">
           <input 
             type="checkbox" 
@@ -182,7 +182,11 @@ const Navbar = () => {
           </div>
         </label>
 
-        {user ? (
+        {loading ? (
+          <div className="flex items-center space-x-2">
+            <div className="skeleton w-10 h-10 rounded-full shrink-0"></div>
+          </div>
+        ) : user ? (
           <div className="dropdown dropdown-end">
             <div 
               tabIndex={0} 
@@ -224,11 +228,11 @@ const Navbar = () => {
             </ul>
           </div>
         ) : (
-          <div className="flex space-x-3">
-            <Link to="/login" className="btn btn-primary px-6 py-2">
+          <div className="flex space-x-2">
+            <Link to="/login" className="btn btn-primary btn-sm sm:btn-md px-3 sm:px-6 py-2">
               Login
             </Link>
-            <Link to="/register" className="btn btn-outline btn-primary px-6 py-2">
+            <Link to="/register" className="btn btn-outline btn-primary btn-sm sm:btn-md px-3 sm:px-6 py-2">
               Register
             </Link>
           </div>

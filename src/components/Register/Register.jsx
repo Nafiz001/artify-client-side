@@ -6,7 +6,7 @@ import { FcGoogle } from "react-icons/fc";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 
 const Register = () => {
-  const { createUser, updateUserProfile, signInWithGoogle } = useContext(AuthContext);
+  const { createUser, updateUserProfile, signInWithGoogle, signOutUser } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -40,6 +40,28 @@ const Register = () => {
     setError("");
     setLoading(true);
 
+    if (photoURL.length > 500) {
+      setError("Photo URL is too long. Please use a shorter URL.");
+      Swal.fire({
+        title: "Invalid Photo URL!",
+        text: "Photo URL is too long. Please use a shorter URL (max 500 characters).",
+        icon: "error",
+      });
+      setLoading(false);
+      return;
+    }
+
+    if (photoURL.startsWith('data:')) {
+      setError("Please use a valid image URL, not a data URI.");
+      Swal.fire({
+        title: "Invalid Photo URL!",
+        text: "Please use a direct image URL (e.g., from Imgur, Cloudinary) instead of a data URI.",
+        icon: "error",
+      });
+      setLoading(false);
+      return;
+    }
+
     const passwordError = validatePassword(password);
     if (passwordError) {
       setError(passwordError);
@@ -70,14 +92,16 @@ const Register = () => {
               body: JSON.stringify(userData),
             });
 
-            Swal.fire({
-              title: "Welcome to Artisan's Echo!",
-              text: "Your account has been created successfully.",
-              icon: "success",
-              timer: 1500,
-              showConfirmButton: false,
+            signOutUser().then(() => {
+              Swal.fire({
+                title: "Welcome to Artisan's Echo!",
+                text: "Your account has been created successfully. Please login to continue.",
+                icon: "success",
+                timer: 2000,
+                showConfirmButton: false,
+              });
+              navigate("/login");
             });
-            navigate("/");
           })
           .catch((error) => {
             setError(error.message);
@@ -139,11 +163,11 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-100 via-white to-gray-100 flex items-center justify-center p-4">
-      <div className="max-w-md w-full bg-white/80 backdrop-blur-lg rounded-2xl p-8 shadow-2xl border border-gray-200">
+    <div className="min-h-screen bg-base-200 flex items-center justify-center p-4">
+      <div className="max-w-md w-full bg-base-100 backdrop-blur-lg rounded-2xl p-8 shadow-2xl border border-base-300">
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-800 mb-2">Join Our Community</h2>
-          <p className="text-gray-600">Create your account to start your artistic journey</p>
+          <h2 className="text-3xl font-bold text-base-content mb-2">Join Our Community</h2>
+          <p className="text-base-content/70">Create your account to start your artistic journey</p>
         </div>
 
         {error && (
@@ -155,70 +179,71 @@ const Register = () => {
         <form onSubmit={handleRegister} className="space-y-6">
           <div>
             <label className="label">
-              <span className="label-text text-gray-700 font-medium">Full Name</span>
+              <span className="label-text text-base-content font-medium">Full Name</span>
             </label>
             <input
               type="text"
               name="name"
               placeholder="Enter your full name"
-              className="input input-bordered w-full bg-white/90 text-gray-800 placeholder-gray-400 border-2 focus:border-primary"
+              className="input input-bordered w-full bg-base-200 text-base-content placeholder:text-base-content/40 border-2 focus:border-primary"
               required
             />
           </div>
 
           <div>
             <label className="label">
-              <span className="label-text text-gray-700 font-medium">Email Address</span>
+              <span className="label-text text-base-content font-medium">Email Address</span>
             </label>
             <input
               type="email"
               name="email"
               placeholder="Enter your email"
-              className="input input-bordered w-full bg-white/90 text-gray-800 placeholder-gray-400 border-2 focus:border-primary"
+              className="input input-bordered w-full bg-base-200 text-base-content placeholder:text-base-content/40 border-2 focus:border-primary"
               required
             />
           </div>
 
           <div>
             <label className="label">
-              <span className="label-text text-gray-700 font-medium">Profile Photo URL</span>
+              <span className="label-text text-base-content font-medium">Profile Photo URL</span>
             </label>
             <input
               type="url"
               name="photoURL"
-              placeholder="Enter your photo URL"
-              className="input input-bordered w-full bg-white/90 text-gray-800 placeholder-gray-400 border-2 focus:border-primary"
+              placeholder="https://example.com/photo.jpg"
+              className="input input-bordered w-full bg-base-200 text-base-content placeholder:text-base-content/40 border-2 focus:border-primary"
               required
+              maxLength={500}
             />
             <label className="label">
-              <span className="label-text-alt text-xs text-gray-500">
-                A profile picture helps others recognize you
+              <span className="label-text-alt text-xs text-base-content/60">
+                Use a direct image URL (e.g., from Imgur, Cloudinary). Max 500 characters.
               </span>
             </label>
           </div>
 
           <div>
             <label className="label">
-              <span className="label-text text-gray-700 font-medium">Password</span>
+              <span className="label-text text-base-content font-medium">Password</span>
             </label>
             <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
                 name="password"
                 placeholder="Create a strong password"
-                className="input input-bordered w-full bg-white/90 text-gray-800 placeholder-gray-400 border-2 focus:border-primary pr-12"
+                className="input input-bordered w-full bg-base-200 text-base-content placeholder:text-base-content/40 border-2 focus:border-primary pr-14"
                 required
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 transition-colors"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-base-content/60 hover:text-base-content transition-colors z-10"
               >
                 {showPassword ? <HiEyeOff size={20} /> : <HiEye size={20} />}
               </button>
             </div>
             <label className="label">
-              <span className="label-text-alt text-xs text-gray-500">
+              <span className="label-text-alt text-xs text-base-content/60">
                 Must contain uppercase, lowercase, and minimum 6 characters
               </span>
             </label>
@@ -233,19 +258,19 @@ const Register = () => {
           </button>
         </form>
 
-        <div className="divider text-gray-500">OR</div>
+        <div className="divider text-base-content/60">OR</div>
 
         <button
           onClick={handleGoogleSignIn}
           disabled={loading}
-          className="btn btn-outline w-full text-gray-700 border-gray-300 hover:bg-gray-50 transition-all duration-300"
+          className="btn btn-outline w-full border-base-300 hover:bg-base-200 transition-all duration-300"
         >
           <FcGoogle size={20} />
           Continue with Google
         </button>
 
         <div className="text-center mt-8">
-          <p className="text-gray-600">
+          <p className="text-base-content/70">
             Already have an account?{" "}
             <Link
               to="/login"

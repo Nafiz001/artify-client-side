@@ -4,7 +4,6 @@ import RootLayout from '../layouts/RootLayout';
 import Loading from '../components/Loading/Loading';
 import PrivateRoute from './PrivateRoute';
 
-// Lazy load components for better performance
 const Home = lazy(() => import('../components/Home/Home'));
 const Login = lazy(() => import('../components/Login/Login'));
 const Register = lazy(() => import('../components/Register/Register'));

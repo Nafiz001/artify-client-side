@@ -64,7 +64,6 @@ const MyGallery = () => {
 
     if (result.isConfirmed) {
       try {
-        // Get Firebase token
         const token = await user.getIdToken();
 
         const response = await fetch(
@@ -117,7 +116,6 @@ const MyGallery = () => {
     };
 
     try {
-      // Get Firebase token
       const token = await user.getIdToken();
 
       const response = await fetch(
@@ -175,7 +173,6 @@ const MyGallery = () => {
   return (
     <div className="min-h-screen bg-base-100 py-12 px-4">
       <div className="container mx-auto">
-        {/* Header */}
         <Fade>
           <div className="text-center mb-12">
             <h1 className="text-5xl font-bold mb-4">My Gallery</h1>
@@ -190,7 +187,6 @@ const MyGallery = () => {
           </div>
         </Fade>
 
-        {/* Stats */}
         <div className="stats stats-vertical lg:stats-horizontal shadow w-full mb-12">
           <div className="stat">
             <div className="stat-figure text-primary">
@@ -266,7 +262,6 @@ const MyGallery = () => {
           </div>
         </div>
 
-        {/* Artworks Grid */}
         {artworks.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {artworks.map((artwork, index) => (
@@ -337,7 +332,6 @@ const MyGallery = () => {
         )}
       </div>
 
-      {/* Edit Modal */}
       <dialog id="edit_modal" className="modal">
         <div className="modal-box max-w-2xl">
           <h3 className="font-bold text-2xl mb-6">Edit Artwork</h3>

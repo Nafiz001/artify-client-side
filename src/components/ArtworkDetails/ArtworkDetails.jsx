@@ -14,24 +14,20 @@ const ArtworkDetails = () => {
   const [hasLiked, setHasLiked] = useState(false);
 
   useEffect(() => {
-    // Fetch artwork details
     fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/artwork/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setArtwork(data);
         
-        // Check if current user has already liked this artwork
         if (user?.email && data.likedBy && Array.isArray(data.likedBy)) {
           setHasLiked(data.likedBy.includes(user.email));
         }
         
-        // Fetch other artworks by the same artist
         fetch(
           `${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/my-artworks/${data.artistEmail}`
         )
           .then((res) => res.json())
           .then((artistData) => {
-            // Filter out the current artwork
             const otherWorks = artistData.filter((art) => art._id !== id);
             setArtistArtworks(otherWorks.slice(0, 3));
             setLoading(false);
@@ -65,7 +61,6 @@ const ArtworkDetails = () => {
     )
       .then((res) => res.json())
       .then(() => {
-        // Fetch updated artwork to get the actual like count from database
         fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/artwork/${id}`)
           .then((res) => res.json())
           .then((updatedArtwork) => {
@@ -151,17 +146,14 @@ const ArtworkDetails = () => {
 
   return (
     <div className="min-h-screen bg-base-100 py-12 px-4">
-      <div className="container mx-auto max-w-7xl">
-        {/* Back Button */}
+      <div className="container mx-auto px-4 py-12">
         <Fade>
           <Link to="/explore" className="btn btn-ghost mb-6">
             ← Back to Explore
           </Link>
         </Fade>
 
-        {/* Main Content */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-          {/* Artwork Image */}
           <Slide direction="left">
             <div className="rounded-lg overflow-hidden shadow-2xl">
               <img
@@ -172,7 +164,6 @@ const ArtworkDetails = () => {
             </div>
           </Slide>
 
-          {/* Artwork Details */}
           <Slide direction="right">
             <div className="space-y-6">
               <div>
@@ -180,7 +171,6 @@ const ArtworkDetails = () => {
                 <p className="text-xl text-gray-600">{artwork.category}</p>
               </div>
 
-              {/* Artist Info */}
               <div className="flex items-center gap-4 p-4 bg-base-200 rounded-lg">
                 <div className="avatar">
                   <div className="w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
@@ -202,7 +192,6 @@ const ArtworkDetails = () => {
                 </div>
               </div>
 
-              {/* Artwork Info */}
               <div className="space-y-4">
                 <div>
                   <h3 className="font-semibold text-lg mb-2">Description</h3>
@@ -241,7 +230,6 @@ const ArtworkDetails = () => {
                 </div>
               </div>
 
-              {/* Action Buttons */}
               <div className="flex flex-wrap gap-4 pt-4">
                 <button
                   onClick={handleLike}
@@ -298,7 +286,6 @@ const ArtworkDetails = () => {
           </Slide>
         </div>
 
-        {/* More from Artist */}
         {artistArtworks.length > 0 && (
           <div>
             <Fade>

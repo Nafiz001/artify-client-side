@@ -91,11 +91,11 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-100 via-white to-gray-100 flex items-center justify-center p-4">
-      <div className="max-w-md w-full bg-white/80 backdrop-blur-lg rounded-2xl p-8 shadow-2xl border border-gray-200">
+    <div className="min-h-screen bg-base-200 flex items-center justify-center p-4">
+      <div className="max-w-md w-full bg-base-100 backdrop-blur-lg rounded-2xl p-8 shadow-2xl border border-base-300">
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-800 mb-2">Welcome Back</h2>
-          <p className="text-gray-600">Sign in to your Artisan's Echo account</p>
+          <h2 className="text-3xl font-bold text-base-content mb-2">Welcome Back</h2>
+          <p className="text-base-content/70">Sign in to your Artisan's Echo account</p>
         </div>
 
         {error && (
@@ -107,33 +107,33 @@ const Login = () => {
         <form onSubmit={handleLogin} className="space-y-6">
           <div>
             <label className="label">
-              <span className="label-text text-gray-700 font-medium">Email Address</span>
+              <span className="label-text text-base-content font-medium">Email Address</span>
             </label>
             <input
               type="email"
               name="email"
               placeholder="Enter your email"
-              className="input input-bordered w-full bg-white/90 text-gray-800 placeholder-gray-400 border-2 focus:border-primary"
+              className="input input-bordered w-full bg-base-200 text-base-content placeholder:text-base-content/40 border-2 focus:border-primary"
               required
             />
           </div>
 
           <div>
             <label className="label">
-              <span className="label-text text-gray-700 font-medium">Password</span>
+              <span className="label-text text-base-content font-medium">Password</span>
             </label>
             <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
                 name="password"
                 placeholder="Enter your password"
-                className="input input-bordered w-full bg-white/90 text-gray-800 placeholder-gray-400 border-2 focus:border-primary pr-12"
+                className="input input-bordered w-full bg-base-200 text-base-content placeholder:text-base-content/40 border-2 focus:border-primary pr-14"
                 required
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 transition-colors"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-base-content/60 hover:text-base-content transition-colors z-10"
               >
                 {showPassword ? <HiEyeOff size={20} /> : <HiEye size={20} />}
               </button>
@@ -149,19 +149,19 @@ const Login = () => {
           </button>
         </form>
 
-        <div className="divider text-gray-500">OR</div>
+        <div className="divider text-base-content/60">OR</div>
 
         <button
           onClick={handleGoogleSignIn}
           disabled={loading}
-          className="btn btn-outline w-full text-gray-700 border-gray-300 hover:bg-gray-50 transition-all duration-300"
+          className="btn btn-outline w-full border-base-300 hover:bg-base-200 transition-all duration-300"
         >
           <FcGoogle size={20} />
           Continue with Google
         </button>
 
         <div className="text-center mt-8">
-          <p className="text-gray-600">
+          <p className="text-base-content/70">
             Don't have an account?{" "}
             <Link
               to="/register"

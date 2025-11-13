@@ -14,13 +14,13 @@ const Home = () => {
   const slides = [
     {
       image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=1200&q=80",
-      title: "Make Your Space a Gift",
+      title: "Give a Gift",
       subtitle: "Discover original art from emerging and established artists",
       cta: "Shop Original Art"
     },
     {
       image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=1200&q=80", 
-      title: "The Joy of Living with Original Art",
+      title: "The Joy of Original Art",
       subtitle: "Experience authentic creativity in your daily life",
       cta: "Explore Collections"
     },
@@ -61,7 +61,6 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-base-100">
-      {/* Hero Section with Elegant Slider */}
       <div className="relative h-[70vh] lg:h-[80vh] overflow-hidden bg-linear-to-r from-base-300 to-base-200">
         {slides.map((slide, index) => (
           <div
@@ -71,7 +70,6 @@ const Home = () => {
             }`}
           >
             <div className="grid lg:grid-cols-2 h-full">
-              {/* Text Content */}
               <div className="flex items-center justify-center p-8 lg:p-16 bg-linear-to-br from-primary/5 to-secondary/5">
                 <div className="max-w-xl text-center lg:text-left">
                   <Fade cascade damping={0.3}>
@@ -81,6 +79,7 @@ const Home = () => {
                     <p className="text-lg lg:text-xl text-base-content/70 mb-8 font-light leading-relaxed">
                       {slide.subtitle}
                     </p>
+                    <br />
                     <Link 
                       to="/explore" 
                       className="btn btn-primary btn-lg px-8 py-3 rounded-none border-0 bg-neutral text-white hover:bg-neutral-focus transition-all duration-300 text-sm font-medium tracking-wider uppercase"
@@ -91,7 +90,6 @@ const Home = () => {
                 </div>
               </div>
               
-              {/* Image Content */}
               <div className="relative overflow-hidden">
                 <img
                   src={slide.image}
@@ -104,7 +102,6 @@ const Home = () => {
           </div>
         ))}
         
-        {/* Slide Indicators */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3">
           {slides.map((_, index) => (
             <button
@@ -181,7 +178,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Why Buy Original Art Section */}
       <section className="py-20 bg-linear-to-br from-base-200/50 to-base-300/30">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -236,7 +232,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Browse by Category */}
       <section className="py-20 bg-base-100">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-16">
@@ -286,7 +281,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Top Artists of the Week Section */}
       <section className="py-20 bg-gradient-to-br from-primary/5 to-secondary/5">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-16">
@@ -359,7 +353,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Community Highlights Section */}
       <section className="py-20 bg-base-100">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-16">
@@ -450,7 +443,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Typewriter Section */}
       <section className="py-16 bg-linear-to-r from-primary/10 to-secondary/10">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl lg:text-5xl font-light mb-8 text-primary">
@@ -472,7 +464,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Newsletter Section */}
       <section className="py-20 bg-neutral text-white">
         <div className="container mx-auto px-4 max-w-4xl text-center">
           <Fade>
@@ -482,13 +473,13 @@ const Home = () => {
             <p className="text-lg text-white/80 mb-8 leading-relaxed">
               Get the latest updates on new artworks, artist features, and exclusive collections.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+            <div className="flex justify-center items-stretch flex-col sm:flex-row gap-4 max-w-md mx-auto">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="input input-bordered flex-1 rounded-none bg-white text-neutral"
+                className="input input-bordered flex-1 rounded-none bg-white text-neutral w-full sm:w-auto min-h-[48px]"
               />
-              <button className="btn btn-primary rounded-none px-8 text-sm font-medium tracking-wider uppercase border-0">
+              <button className="btn btn-primary rounded-none px-8 text-sm font-medium tracking-wider uppercase border-0 w-full sm:w-auto">
                 Subscribe
               </button>
             </div>
