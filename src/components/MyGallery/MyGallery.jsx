@@ -24,7 +24,7 @@ const MyGallery = () => {
   useEffect(() => {
     if (user?.email) {
       fetch(
-        `${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/my-artworks/${
+        `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/my-artworks/${
           user.email
         }`
       )
@@ -39,7 +39,7 @@ const MyGallery = () => {
 
   const fetchArtworks = () => {
     fetch(
-      `${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/my-artworks/${
+      `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/my-artworks/${
         user.email
       }`
     )
@@ -67,7 +67,7 @@ const MyGallery = () => {
         const token = await user.getIdToken();
 
         const response = await fetch(
-          `${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/artwork/${id}`,
+          `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/artwork/${id}`,
           {
             method: "DELETE",
             headers: {
@@ -119,7 +119,7 @@ const MyGallery = () => {
       const token = await user.getIdToken();
 
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/artwork/${
+        `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/artwork/${
           editingArtwork._id
         }`,
         {

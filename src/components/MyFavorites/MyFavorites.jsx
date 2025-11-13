@@ -12,7 +12,7 @@ const MyFavorites = () => {
   useEffect(() => {
     if (user?.email) {
       fetch(
-        `${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/favorites/${
+        `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/favorites/${
           user.email
         }`
       )
@@ -27,7 +27,7 @@ const MyFavorites = () => {
 
   const fetchFavorites = () => {
     fetch(
-      `${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/favorites/${
+      `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/favorites/${
         user.email
       }`
     )
@@ -50,7 +50,7 @@ const MyFavorites = () => {
       confirmButtonText: "Yes, remove it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/favorites`, {
+        fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/favorites`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",

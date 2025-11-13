@@ -22,7 +22,7 @@ const ExploreArtworks = () => {
   ];
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/all-artworks`)
+    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/all-artworks`)
       .then((res) => res.json())
       .then((data) => {
         setArtworks(data);

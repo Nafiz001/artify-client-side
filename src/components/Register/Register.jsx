@@ -84,7 +84,7 @@ const Register = () => {
               photoURL: photoURL,
             };
 
-            fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/users`, {
+            fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/users`, {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -132,7 +132,7 @@ const Register = () => {
           photoURL: result.user.photoURL,
         };
 
-        fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/users`, {
+        fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/users`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

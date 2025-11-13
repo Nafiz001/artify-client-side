@@ -12,7 +12,7 @@ const ArtistProfile = () => {
   useEffect(() => {
     if (email) {
       // Fetch artist's artworks
-      fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/my-artworks/${email}`)
+      fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/my-artworks/${email}`)
         .then((res) => res.json())
         .then((data) => {
           setArtworks(data);

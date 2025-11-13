@@ -14,7 +14,7 @@ const ArtworkDetails = () => {
   const [hasLiked, setHasLiked] = useState(false);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/artwork/${id}`)
+    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/artwork/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setArtwork(data);
@@ -24,7 +24,7 @@ const ArtworkDetails = () => {
         }
         
         fetch(
-          `${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/my-artworks/${data.artistEmail}`
+          `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/my-artworks/${data.artistEmail}`
         )
           .then((res) => res.json())
           .then((artistData) => {
@@ -47,7 +47,7 @@ const ArtworkDetails = () => {
     }
 
     fetch(
-      `${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/artwork/${id}/like`,
+      `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/artwork/${id}/like`,
       {
         method: "PATCH",
         headers: {
@@ -61,7 +61,7 @@ const ArtworkDetails = () => {
     )
       .then((res) => res.json())
       .then(() => {
-        fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/artwork/${id}`)
+        fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/artwork/${id}`)
           .then((res) => res.json())
           .then((updatedArtwork) => {
             setArtwork(updatedArtwork);
@@ -91,7 +91,7 @@ const ArtworkDetails = () => {
       addedAt: new Date().toISOString(),
     };
 
-    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/favorites`, {
+    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/favorites`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -40,7 +40,7 @@ const Home = () => {
   }, [slides.length]);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/latest-artworks`)
+    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/latest-artworks`)
       .then((res) => res.json())
       .then((data) => {
         setFeaturedArtworks(data);
@@ -50,7 +50,7 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/top-artists`)
+    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/top-artists`)
       .then((res) => res.json())
       .then((data) => {
         setTopArtists(data);
