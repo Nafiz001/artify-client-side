@@ -281,7 +281,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-br from-primary/5 to-secondary/5">
+      <section className="py-20 bg-linear-to-br from-primary/5 to-secondary/5">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-16">
             <Fade>
@@ -369,7 +369,7 @@ const Home = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <Slide direction="left">
-              <div className="card bg-gradient-to-br from-primary/10 to-primary/5 shadow-xl hover:shadow-2xl transition-all duration-300">
+              <div className="card bg-linear-to-br from-primary/10 to-primary/5 shadow-xl hover:shadow-2xl transition-all duration-300">
                 <div className="card-body">
                   <div className="flex items-center gap-4 mb-4">
                     <div className="p-3 bg-primary/20 rounded-lg">
@@ -393,7 +393,7 @@ const Home = () => {
             </Slide>
 
             <Slide direction="up">
-              <div className="card bg-gradient-to-br from-secondary/10 to-secondary/5 shadow-xl hover:shadow-2xl transition-all duration-300">
+              <div className="card bg-linear-to-br from-secondary/10 to-secondary/5 shadow-xl hover:shadow-2xl transition-all duration-300">
                 <div className="card-body">
                   <div className="flex items-center gap-4 mb-4">
                     <div className="p-3 bg-secondary/20 rounded-lg">
@@ -417,7 +417,7 @@ const Home = () => {
             </Slide>
 
             <Slide direction="right">
-              <div className="card bg-gradient-to-br from-accent/10 to-accent/5 shadow-xl hover:shadow-2xl transition-all duration-300">
+              <div className="card bg-linear-to-br from-accent/10 to-accent/5 shadow-xl hover:shadow-2xl transition-all duration-300">
                 <div className="card-body">
                   <div className="flex items-center gap-4 mb-4">
                     <div className="p-3 bg-accent/20 rounded-lg">

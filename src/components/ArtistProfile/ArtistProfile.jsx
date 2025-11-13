@@ -61,7 +61,7 @@ const ArtistProfile = () => {
       <div className="container mx-auto max-w-7xl">
         {/* Artist Header */}
         <Fade>
-          <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg p-8 mb-12">
+          <div className="bg-linear-to-r from-primary/10 to-secondary/10 rounded-lg p-8 mb-12">
             <div className="flex flex-col md:flex-row items-center gap-8">
               {/* Artist Photo */}
               <div className="avatar">
@@ -144,7 +144,7 @@ const ArtistProfile = () => {
                         alt={artwork.title}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </figure>
                     <div className="card-body">
                       <h3 className="card-title text-base-content group-hover:text-primary transition-colors">
