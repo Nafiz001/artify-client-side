@@ -4,6 +4,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import Swal from "sweetalert2";
 import { FcGoogle } from "react-icons/fc";
 import { HiEye, HiEyeOff } from "react-icons/hi";
+import { FiUser } from "react-icons/fi";
 
 const Login = () => {
   const { signInUser, signInWithGoogle } = useContext(AuthContext);
@@ -90,6 +91,20 @@ const Login = () => {
       });
   };
 
+  const handleDemoLogin = () => {
+    // Auto-fill demo credentials
+    document.querySelector('input[name="email"]').value = "demo@artify.com";
+    document.querySelector('input[name="password"]').value = "Demo123";
+
+    Swal.fire({
+      title: "Demo Credentials Loaded",
+      text: "Click 'Sign In' to login with demo account",
+      icon: "info",
+      timer: 2000,
+      showConfirmButton: false,
+    });
+  };
+
   return (
     <div className="min-h-screen bg-base-200 flex items-center justify-center p-4">
       <div className="max-w-md w-full bg-base-100 backdrop-blur-lg rounded-2xl p-8 shadow-2xl border border-base-300">
@@ -150,6 +165,16 @@ const Login = () => {
         </form>
 
         <div className="divider text-base-content/60">OR</div>
+
+        {/* Demo Credentials Button */}
+        <button
+          onClick={handleDemoLogin}
+          disabled={loading}
+          className="btn btn-outline btn-info w-full mb-3 border-info hover:bg-info hover:text-white transition-all duration-300"
+        >
+          <FiUser size={20} />
+          Use Demo Credentials
+        </button>
 
         <button
           onClick={handleGoogleSignIn}

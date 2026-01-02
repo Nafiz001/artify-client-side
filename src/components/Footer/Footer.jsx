@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
     <footer className="bg-base-200 text-base-content">
@@ -15,17 +17,17 @@ const Footer = () => {
         </aside>
         <nav className="flex flex-col">
           <h6 className="footer-title">Services</h6>
-          <a className="link link-hover">Browse Artworks</a>
-          <a className="link link-hover">Add Artwork</a>
-          <a className="link link-hover">My Gallery</a>
-          <a className="link link-hover">Favorites</a>
+          <Link to="/explore" className="link link-hover">Browse Artworks</Link>
+          <Link to="/dashboard/add-artwork" className="link link-hover">Add Artwork</Link>
+          <Link to="/dashboard/my-gallery" className="link link-hover">My Gallery</Link>
+          <Link to="/dashboard/my-favorites" className="link link-hover">Favorites</Link>
         </nav>
         <nav className="flex flex-col">
           <h6 className="footer-title">Company</h6>
-          <a className="link link-hover">About us</a>
-          <a className="link link-hover">Contact</a>
-          <a className="link link-hover">Artists</a>
-          <a className="link link-hover">Press kit</a>
+          <Link to="/about" className="link link-hover">About us</Link>
+          <Link to="/contact" className="link link-hover">Contact</Link>
+          <Link to="/explore" className="link link-hover">Artists</Link>
+          <Link to="/privacy" className="link link-hover">Privacy Policy</Link>
         </nav>
         <nav className="flex flex-col">
           <h6 className="footer-title">Follow Us</h6>
@@ -58,3 +60,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

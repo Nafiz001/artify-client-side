@@ -6,6 +6,17 @@ A modern and elegant art marketplace platform where artists can showcase their c
 
 ## ✨ Key Features
 
+### 🎯 Assignment 10 Enhancements
+
+- **📊 Professional Dashboard** - Comprehensive dashboard with real-time statistics, dynamic charts (Pie & Line charts using Recharts), data tables, and quick actions for managing your art portfolio
+- **👤 Profile Management** - Full-featured profile page with editable information including bio, location, website, and profile photo with account details display
+- **🏠 Enhanced Home Page** - 11+ engaging sections including Statistics, Testimonials, FAQ, Featured Artworks, Top Artists, Community Highlights, and Newsletter subscription
+- **📄 Additional Pages** - Professional About Us page with team showcase, Contact page with form and map integration, and comprehensive Privacy Policy page
+- **🎭 Demo Credentials** - One-click demo login button for easy testing and exploration of the platform
+- **🔗 Functional Navigation** - Complete navigation system with working footer links, dashboard sidebar menu, and responsive mobile navigation
+
+### 🎨 Core Features
+
 - **🎨 Stunning Art Gallery** - Browse and explore beautiful artworks from talented artists worldwide with an elegant, modern UI featuring smooth animations and intuitive navigation
 - **👤 Artist Profiles** - Dedicated artist profile pages showcasing bio, total artworks, accumulated likes, and follower count with a complete gallery view
 - **🖼️ Personal Art Management** - Create, update, and manage your personal art gallery with full CRUD operations including image upload, categorization, and visibility controls
@@ -22,6 +33,7 @@ A modern and elegant art marketplace platform where artists can showcase their c
 - **React Router** - Client-side routing for seamless navigation
 - **Tailwind CSS** - Utility-first CSS framework
 - **DaisyUI** - Beautiful component library for Tailwind
+- **Recharts** - Composable charting library for React (Dashboard charts)
 - **Firebase Authentication** - Secure user authentication
 - **SweetAlert2** - Beautiful popup notifications
 - **React Awesome Reveal** - Smooth animation effects

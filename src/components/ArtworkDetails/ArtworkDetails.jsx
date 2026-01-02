@@ -18,11 +18,11 @@ const ArtworkDetails = () => {
       .then((res) => res.json())
       .then((data) => {
         setArtwork(data);
-        
+
         if (user?.email && data.likedBy && Array.isArray(data.likedBy)) {
           setHasLiked(data.likedBy.includes(user.email));
         }
-        
+
         fetch(
           `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/my-artworks/${data.artistEmail}`
         )

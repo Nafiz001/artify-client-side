@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import RootLayout from '../layouts/RootLayout';
+import DashboardLayout from '../layouts/DashboardLayout';
 import Loading from '../components/Loading/Loading';
 import PrivateRoute from './PrivateRoute';
 
@@ -14,6 +15,11 @@ const MyGallery = lazy(() => import('../components/MyGallery/MyGallery'));
 const MyFavorites = lazy(() => import('../components/MyFavorites/MyFavorites'));
 const ArtistProfile = lazy(() => import('../components/ArtistProfile/ArtistProfile'));
 const CategoryFilter = lazy(() => import('../components/CategoryFilter/CategoryFilter'));
+const DashboardOverview = lazy(() => import('../components/Dashboard/DashboardOverview'));
+const Profile = lazy(() => import('../components/Dashboard/Profile'));
+const About = lazy(() => import('../components/About/About'));
+const Contact = lazy(() => import('../components/Contact/Contact'));
+const Privacy = lazy(() => import('../components/Privacy/Privacy'));
 const NotFound = lazy(() => import('../components/NotFound/NotFound'));
 
 const router = createBrowserRouter([
@@ -46,16 +52,6 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: '/add-artwork',
-        element: (
-          <PrivateRoute>
-            <Suspense fallback={<Loading />}>
-              <AddArtwork />
-            </Suspense>
-          </PrivateRoute>
-        ),
-      },
-      {
         path: '/explore',
         element: (
           <Suspense fallback={<Loading />}>
@@ -66,31 +62,9 @@ const router = createBrowserRouter([
       {
         path: '/artwork/:id',
         element: (
-          <PrivateRoute>
-            <Suspense fallback={<Loading />}>
-              <ArtworkDetails />
-            </Suspense>
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: '/my-gallery',
-        element: (
-          <PrivateRoute>
-            <Suspense fallback={<Loading />}>
-              <MyGallery />
-            </Suspense>
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: '/my-favorites',
-        element: (
-          <PrivateRoute>
-            <Suspense fallback={<Loading />}>
-              <MyFavorites />
-            </Suspense>
-          </PrivateRoute>
+          <Suspense fallback={<Loading />}>
+            <ArtworkDetails />
+          </Suspense>
         ),
       },
       {
@@ -110,10 +84,84 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: '/about',
+        element: (
+          <Suspense fallback={<Loading />}>
+            <About />
+          </Suspense>
+        ),
+      },
+      {
+        path: '/contact',
+        element: (
+          <Suspense fallback={<Loading />}>
+            <Contact />
+          </Suspense>
+        ),
+      },
+      {
+        path: '/privacy',
+        element: (
+          <Suspense fallback={<Loading />}>
+            <Privacy />
+          </Suspense>
+        ),
+      },
+      {
         path: '*',
         element: (
           <Suspense fallback={<Loading />}>
             <NotFound />
+          </Suspense>
+        ),
+      },
+    ],
+  },
+  {
+    path: '/dashboard',
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        index: true,
+        element: (
+          <Suspense fallback={<Loading />}>
+            <DashboardOverview />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'profile',
+        element: (
+          <Suspense fallback={<Loading />}>
+            <Profile />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'add-artwork',
+        element: (
+          <Suspense fallback={<Loading />}>
+            <AddArtwork />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'my-gallery',
+        element: (
+          <Suspense fallback={<Loading />}>
+            <MyGallery />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'my-favorites',
+        element: (
+          <Suspense fallback={<Loading />}>
+            <MyFavorites />
           </Suspense>
         ),
       },

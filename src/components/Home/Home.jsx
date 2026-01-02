@@ -19,7 +19,7 @@ const Home = () => {
       cta: "Shop Original Art"
     },
     {
-      image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=1200&q=80", 
+      image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=1200&q=80",
       title: "The Joy of Original Art",
       subtitle: "Experience authentic creativity in your daily life",
       cta: "Explore Collections"
@@ -65,9 +65,8 @@ const Home = () => {
         {slides.map((slide, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
-              index === currentSlide ? "opacity-100 scale-100" : "opacity-0 scale-105"
-            }`}
+            className={`absolute inset-0 transition-all duration-1000 ease-in-out ${index === currentSlide ? "opacity-100 scale-100" : "opacity-0 scale-105"
+              }`}
           >
             <div className="grid lg:grid-cols-2 h-full">
               <div className="flex items-center justify-center p-8 lg:p-16 bg-linear-to-br from-primary/5 to-secondary/5">
@@ -80,8 +79,8 @@ const Home = () => {
                       {slide.subtitle}
                     </p>
                     <br />
-                    <Link 
-                      to="/explore" 
+                    <Link
+                      to="/explore"
                       className="btn btn-primary btn-lg px-8 py-3 rounded-none border-0 bg-neutral text-white hover:bg-neutral-focus transition-all duration-300 text-sm font-medium tracking-wider uppercase"
                     >
                       {slide.cta}
@@ -89,7 +88,7 @@ const Home = () => {
                   </Fade>
                 </div>
               </div>
-              
+
               <div className="relative overflow-hidden">
                 <img
                   src={slide.image}
@@ -101,15 +100,14 @@ const Home = () => {
             </div>
           </div>
         ))}
-        
+
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3">
           {slides.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === currentSlide ? "bg-white scale-125" : "bg-white/50 hover:bg-white/75"
-              }`}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentSlide ? "bg-white scale-125" : "bg-white/50 hover:bg-white/75"
+                }`}
             />
           ))}
         </div>
@@ -166,10 +164,10 @@ const Home = () => {
               ))}
             </div>
           )}
-          
+
           <div className="text-center mt-12">
-            <Link 
-              to="/explore" 
+            <Link
+              to="/explore"
               className="btn btn-outline btn-primary btn-lg px-12 rounded-none transition-all duration-300 text-sm font-medium tracking-wider uppercase"
             >
               View All Artworks
@@ -217,7 +215,7 @@ const Home = () => {
                 </div>
               </div>
             </Slide>
-            
+
             <Slide direction="right">
               <div className="relative">
                 <img
@@ -242,7 +240,7 @@ const Home = () => {
               <div className="w-24 h-0.5 bg-primary mx-auto mb-6"></div>
             </Fade>
           </div>
-          
+
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {[
               { name: "Paintings", image: "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?w=400&q=80" },
@@ -269,10 +267,10 @@ const Home = () => {
               </Fade>
             ))}
           </div>
-          
+
           <div className="text-center mt-12">
-            <Link 
-              to="/categories" 
+            <Link
+              to="/categories"
               className="btn btn-outline btn-secondary btn-lg px-12 rounded-none transition-all duration-300 text-sm font-medium tracking-wider uppercase"
             >
               View All Categories
@@ -313,8 +311,8 @@ const Home = () => {
                     <figure className="px-6 pt-6">
                       <div className="avatar">
                         <div className="w-32 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                          <img 
-                            src={artist.artistPhoto || "https://i.ibb.co/7J4HzsG/default-avatar.png"} 
+                          <img
+                            src={artist.artistPhoto || "https://i.ibb.co/7J4HzsG/default-avatar.png"}
                             alt={artist.artistName}
                             className="object-cover"
                           />
@@ -337,7 +335,7 @@ const Home = () => {
                         </div>
                       </div>
                       <div className="card-actions mt-4">
-                        <Link 
+                        <Link
                           to={`/artist/${encodeURIComponent(artist._id)}`}
                           className="btn btn-primary btn-sm"
                         >
@@ -380,7 +378,7 @@ const Home = () => {
                     <h3 className="card-title text-base-content">Weekly Challenge</h3>
                   </div>
                   <p className="text-base-content/70 mb-4">
-                    Join our weekly art challenge! This week's theme: "Abstract Emotions". 
+                    Join our weekly art challenge! This week's theme: "Abstract Emotions".
                     Submit your artwork and win amazing prizes.
                   </p>
                   <div className="card-actions justify-end">
@@ -404,7 +402,7 @@ const Home = () => {
                     <h3 className="card-title text-base-content">Featured Collection</h3>
                   </div>
                   <p className="text-base-content/70 mb-4">
-                    Explore our curated collection "Modern Masterpieces" featuring contemporary 
+                    Explore our curated collection "Modern Masterpieces" featuring contemporary
                     artworks from around the globe.
                   </p>
                   <div className="card-actions justify-end">
@@ -428,7 +426,7 @@ const Home = () => {
                     <h3 className="card-title text-base-content">Artist Spotlight</h3>
                   </div>
                   <p className="text-base-content/70 mb-4">
-                    Meet our artist of the week! Discover their creative journey, inspiration, 
+                    Meet our artist of the week! Discover their creative journey, inspiration,
                     and exclusive behind-the-scenes content.
                   </p>
                   <div className="card-actions justify-end">
@@ -443,13 +441,179 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Statistics Section */}
+      <section className="py-20 bg-base-100">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <Fade>
+            <div className="text-center mb-16">
+              <h2 className="text-3xl lg:text-4xl font-light mb-4 text-base-content">
+                By the <span className="font-medium text-primary">Numbers</span>
+              </h2>
+              <div className="w-24 h-0.5 bg-primary mx-auto mb-6"></div>
+              <p className="text-lg text-base-content/70 max-w-2xl mx-auto leading-relaxed">
+                Join thousands of artists and collectors in our growing community
+              </p>
+            </div>
+          </Fade>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {[
+              { number: "10,000+", label: "Active Artists", icon: "👨‍🎨" },
+              { number: "50,000+", label: "Artworks", icon: "🎨" },
+              { number: "1M+", label: "Monthly Views", icon: "👁️" },
+              { number: "95%", label: "Satisfaction Rate", icon: "⭐" },
+            ].map((stat, index) => (
+              <Fade key={stat.label} delay={index * 100}>
+                <div className="text-center p-6 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-lg hover:shadow-xl transition-all duration-300">
+                  <div className="text-5xl mb-4">{stat.icon}</div>
+                  <h3 className="text-4xl font-bold text-primary mb-2">{stat.number}</h3>
+                  <p className="text-base-content/70">{stat.label}</p>
+                </div>
+              </Fade>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20 bg-linear-to-br from-base-200/50 to-base-300/30">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <Fade>
+            <div className="text-center mb-16">
+              <h2 className="text-3xl lg:text-4xl font-light mb-4 text-base-content">
+                What Our <span className="font-medium text-secondary">Community</span> Says
+              </h2>
+              <div className="w-24 h-0.5 bg-secondary mx-auto mb-6"></div>
+              <p className="text-lg text-base-content/70 max-w-2xl mx-auto leading-relaxed">
+                Hear from artists and collectors who love our platform
+              </p>
+            </div>
+          </Fade>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                name: "Emily Rodriguez",
+                role: "Digital Artist",
+                image: "https://i.pravatar.cc/150?img=1",
+                text: "Artisan's Echo has transformed my career. I've connected with collectors worldwide and sold more art than ever before!",
+                rating: 5,
+              },
+              {
+                name: "James Chen",
+                role: "Art Collector",
+                image: "https://i.pravatar.cc/150?img=13",
+                text: "The quality of artworks and the ease of discovering new artists is unmatched. My home is now filled with beautiful pieces.",
+                rating: 5,
+              },
+              {
+                name: "Sarah Williams",
+                role: "Painter",
+                image: "https://i.pravatar.cc/150?img=5",
+                text: "As an emerging artist, this platform gave me the exposure I needed. The community is supportive and the interface is intuitive.",
+                rating: 5,
+              },
+            ].map((testimonial, index) => (
+              <Fade key={testimonial.name} delay={index * 150}>
+                <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300">
+                  <div className="card-body">
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="avatar">
+                        <div className="w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                          <img src={testimonial.image} alt={testimonial.name} />
+                        </div>
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-base-content">{testimonial.name}</h3>
+                        <p className="text-sm text-base-content/60">{testimonial.role}</p>
+                      </div>
+                    </div>
+                    <div className="flex gap-1 mb-3">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <svg
+                          key={i}
+                          className="w-5 h-5 fill-warning"
+                          viewBox="0 0 20 20"
+                        >
+                          <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                        </svg>
+                      ))}
+                    </div>
+                    <p className="text-base-content/70 italic">"{testimonial.text}"</p>
+                  </div>
+                </div>
+              </Fade>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 bg-base-100">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <Fade>
+            <div className="text-center mb-16">
+              <h2 className="text-3xl lg:text-4xl font-light mb-4 text-base-content">
+                Frequently Asked <span className="font-medium text-accent">Questions</span>
+              </h2>
+              <div className="w-24 h-0.5 bg-accent mx-auto mb-6"></div>
+              <p className="text-lg text-base-content/70 max-w-2xl mx-auto leading-relaxed">
+                Everything you need to know about our platform
+              </p>
+            </div>
+          </Fade>
+          <div className="space-y-4">
+            {[
+              {
+                question: "How do I start selling my artwork?",
+                answer: "Simply create an account, complete your profile, and start uploading your artworks. It's free to join and you can start showcasing your work immediately!",
+              },
+              {
+                question: "What commission do you charge?",
+                answer: "We charge a small 10% commission on sales to maintain and improve our platform. This helps us provide the best experience for both artists and collectors.",
+              },
+              {
+                question: "How do I purchase artwork?",
+                answer: "Browse our collection, click on any artwork you like, and use the 'Contact Artist' button to discuss pricing and shipping. We facilitate secure transactions between buyers and sellers.",
+              },
+              {
+                question: "Can I customize my artist profile?",
+                answer: "Absolutely! You can add your bio, profile photo, social media links, and showcase your best works. A complete profile helps you connect better with potential buyers.",
+              },
+              {
+                question: "Is my artwork protected?",
+                answer: "Yes, we take copyright seriously. All artworks are watermarked in preview mode, and we have strict policies against unauthorized use of artists' work.",
+              },
+            ].map((faq, index) => (
+              <Fade key={index} delay={index * 100}>
+                <div className="collapse collapse-arrow bg-base-200 shadow-lg">
+                  <input type="radio" name="faq-accordion" defaultChecked={index === 0} />
+                  <div className="collapse-title text-lg font-medium text-base-content">
+                    {faq.question}
+                  </div>
+                  <div className="collapse-content">
+                    <p className="text-base-content/70 leading-relaxed">{faq.answer}</p>
+                  </div>
+                </div>
+              </Fade>
+            ))}
+          </div>
+          <div className="text-center mt-12">
+            <Fade delay={600}>
+              <p className="text-base-content/70 mb-4">Still have questions?</p>
+              <Link to="/contact" className="btn btn-outline btn-accent">
+                Contact Support
+              </Link>
+            </Fade>
+          </div>
+        </div>
+      </section>
+
       <section className="py-16 bg-linear-to-r from-primary/10 to-secondary/10">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl lg:text-5xl font-light mb-8 text-primary">
             <Typewriter
               words={[
                 "Discover Amazing Artworks",
-                "Support Talented Artists", 
+                "Support Talented Artists",
                 "Find Your Perfect Piece",
                 "Experience Art Like Never Before",
               ]}

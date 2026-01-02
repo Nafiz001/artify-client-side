@@ -53,13 +53,12 @@ const Navbar = () => {
   const navLinks = (
     <>
       <li>
-        <NavLink 
-          to="/" 
-          className={({ isActive }) => 
-            `px-4 py-2 rounded-lg transition-all duration-300 ${
-              isActive 
-                ? "text-primary font-semibold bg-primary/10" 
-                : "text-base-content hover:text-primary hover:bg-primary/5"
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            `px-4 py-2 rounded-lg transition-all duration-300 ${isActive
+              ? "text-primary font-semibold bg-primary/10"
+              : "text-base-content hover:text-primary hover:bg-primary/5"
             }`
           }
         >
@@ -67,13 +66,12 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink 
-          to="/explore" 
-          className={({ isActive }) => 
-            `px-4 py-2 rounded-lg transition-all duration-300 ${
-              isActive 
-                ? "text-primary font-semibold bg-primary/10" 
-                : "text-base-content hover:text-primary hover:bg-primary/5"
+        <NavLink
+          to="/explore"
+          className={({ isActive }) =>
+            `px-4 py-2 rounded-lg transition-all duration-300 ${isActive
+              ? "text-primary font-semibold bg-primary/10"
+              : "text-base-content hover:text-primary hover:bg-primary/5"
             }`
           }
         >
@@ -81,47 +79,48 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink 
-          to="/add-artwork" 
-          className={({ isActive }) => 
-            `px-4 py-2 rounded-lg transition-all duration-300 ${
-              isActive 
-                ? "text-primary font-semibold bg-primary/10" 
-                : "text-base-content hover:text-primary hover:bg-primary/5"
+        <NavLink
+          to="/about"
+          className={({ isActive }) =>
+            `px-4 py-2 rounded-lg transition-all duration-300 ${isActive
+              ? "text-primary font-semibold bg-primary/10"
+              : "text-base-content hover:text-primary hover:bg-primary/5"
             }`
           }
         >
-          Add Artwork
+          About
         </NavLink>
       </li>
-      <li>
-        <NavLink 
-          to="/my-gallery" 
-          className={({ isActive }) => 
-            `px-4 py-2 rounded-lg transition-all duration-300 ${
-              isActive 
-                ? "text-primary font-semibold bg-primary/10" 
-                : "text-base-content hover:text-primary hover:bg-primary/5"
-            }`
-          }
-        >
-          My Gallery
-        </NavLink>
-      </li>
-      <li>
-        <NavLink 
-          to="/my-favorites" 
-          className={({ isActive }) => 
-            `px-4 py-2 rounded-lg transition-all duration-300 ${
-              isActive 
-                ? "text-primary font-semibold bg-primary/10" 
-                : "text-base-content hover:text-primary hover:bg-primary/5"
-            }`
-          }
-        >
-          My Favorites
-        </NavLink>
-      </li>
+      {user && (
+        <>
+          <li>
+            <NavLink
+              to="/dashboard"
+              className={({ isActive }) =>
+                `px-4 py-2 rounded-lg transition-all duration-300 ${isActive
+                  ? "text-primary font-semibold bg-primary/10"
+                  : "text-base-content hover:text-primary hover:bg-primary/5"
+                }`
+              }
+            >
+              Dashboard
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/dashboard/my-favorites"
+              className={({ isActive }) =>
+                `px-4 py-2 rounded-lg transition-all duration-300 ${isActive
+                  ? "text-primary font-semibold bg-primary/10"
+                  : "text-base-content hover:text-primary hover:bg-primary/5"
+                }`
+              }
+            >
+              My Favorites
+            </NavLink>
+          </li>
+        </>
+      )}
     </>
   );
 
@@ -157,16 +156,16 @@ const Navbar = () => {
           <span className="text-secondary ml-1">Echo</span>
         </Link>
       </div>
-      
+
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 space-x-2">{navLinks}</ul>
       </div>
-      
+
       <div className="navbar-end flex items-center space-x-2 sm:space-x-4">
         <label className="swap swap-rotate">
-          <input 
-            type="checkbox" 
-            onChange={toggleTheme} 
+          <input
+            type="checkbox"
+            onChange={toggleTheme}
             checked={theme === "dark"}
             className="sr-only"
           />
@@ -188,9 +187,9 @@ const Navbar = () => {
           </div>
         ) : user ? (
           <div className="dropdown dropdown-end">
-            <div 
-              tabIndex={0} 
-              role="button" 
+            <div
+              tabIndex={0}
+              role="button"
               className="btn btn-ghost btn-circle avatar"
             >
               <div className="w-10 rounded-full ring-2 ring-primary ring-offset-2">
@@ -215,7 +214,7 @@ const Navbar = () => {
               </li>
               <div className="divider my-1"></div>
               <li>
-                <button 
+                <button
                   onClick={handleSignOut}
                   className="text-error hover:bg-error/10 transition-colors"
                 >
