@@ -60,7 +60,7 @@ const AddArtwork = () => {
             showConfirmButton: false,
           });
           form.reset();
-          navigate("/my-gallery");
+          navigate("/dashboard/my-gallery");
         }
       })
       .catch((error) => {

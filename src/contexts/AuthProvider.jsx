@@ -5,6 +5,7 @@ import {
   signInWithEmailAndPassword, 
   signInWithPopup, 
   GoogleAuthProvider,
+  FacebookAuthProvider,
   signOut,
   onAuthStateChanged,
   updateProfile
@@ -16,6 +17,7 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   const googleProvider = new GoogleAuthProvider();
+  const facebookProvider = new FacebookAuthProvider();
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -30,6 +32,11 @@ const AuthProvider = ({ children }) => {
   const signInWithGoogle = () => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
+  };
+
+  const signInWithFacebook = () => {
+    setLoading(true);
+    return signInWithPopup(auth, facebookProvider);
   };
 
   const updateUserProfile = (profile) => {
@@ -58,6 +65,7 @@ const AuthProvider = ({ children }) => {
     createUser,
     signInUser,
     signInWithGoogle,
+    signInWithFacebook,
     updateUserProfile,
     signOutUser,
   };

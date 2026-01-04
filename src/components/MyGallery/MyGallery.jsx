@@ -180,7 +180,7 @@ const MyGallery = () => {
               Manage your artworks and track their performance
             </p>
             <div className="mt-6">
-              <Link to="/add-artwork" className="btn btn-primary btn-lg">
+              <Link to="/dashboard/add-artwork" className="btn btn-primary btn-lg">
                 + Add New Artwork
               </Link>
             </div>
@@ -325,7 +325,7 @@ const MyGallery = () => {
             <p className="text-gray-600 mb-6">
               Start building your gallery by adding your first artwork
             </p>
-            <Link to="/add-artwork" className="btn btn-primary">
+            <Link to="/dashboard/add-artwork" className="btn btn-primary">
               Add Your First Artwork
             </Link>
           </div>

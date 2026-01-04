@@ -95,7 +95,7 @@ const CategoryFilter = () => {
               <p className="text-base-content/70 mb-6">
                 There are no artworks in the "{activeTab}" category yet.
               </p>
-              <Link to="/add-artwork" className="btn btn-primary">
+              <Link to="/dashboard/add-artwork" className="btn btn-primary">
                 Add First Artwork
               </Link>
             </Fade>

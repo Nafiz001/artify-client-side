@@ -3,10 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 import Swal from "sweetalert2";
 import { FcGoogle } from "react-icons/fc";
+import { FaFacebook } from "react-icons/fa";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 
 const Register = () => {
-  const { createUser, updateUserProfile, signInWithGoogle, signOutUser } = useContext(AuthContext);
+  const { createUser, updateUserProfile, signInWithGoogle, signInWithFacebook, signOutUser } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -162,6 +163,48 @@ const Register = () => {
       });
   };
 
+  const handleFacebookSignIn = () => {
+    setError("");
+    setLoading(true);
+
+    signInWithFacebook()
+      .then((result) => {
+        const userData = {
+          name: result.user.displayName,
+          email: result.user.email,
+          photoURL: result.user.photoURL,
+        };
+
+        fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/users`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userData),
+        });
+
+        Swal.fire({
+          title: "Welcome to Artisan's Echo!",
+          text: "Your account has been created successfully.",
+          icon: "success",
+          timer: 1500,
+          showConfirmButton: false,
+        });
+        navigate("/");
+      })
+      .catch((error) => {
+        setError(error.message);
+        Swal.fire({
+          title: "Registration Failed",
+          text: error.message,
+          icon: "error",
+        });
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
   return (
     <div className="min-h-screen bg-base-200 flex items-center justify-center p-4">
       <div className="max-w-md w-full bg-base-100 backdrop-blur-lg rounded-2xl p-8 shadow-2xl border border-base-300">
@@ -263,10 +306,19 @@ const Register = () => {
         <button
           onClick={handleGoogleSignIn}
           disabled={loading}
-          className="btn btn-outline w-full border-base-300 hover:bg-base-200 transition-all duration-300"
+          className="btn btn-outline w-full border-base-300 hover:bg-base-200 transition-all duration-300 mb-3"
         >
           <FcGoogle size={20} />
           Continue with Google
+        </button>
+
+        <button
+          onClick={handleFacebookSignIn}
+          disabled={loading}
+          className="btn btn-outline w-full text-primary border-primary hover:bg-primary hover:text-white transition-all duration-300"
+        >
+          <FaFacebook size={20} />
+          Continue with Facebook
         </button>
 
         <div className="text-center mt-8">
